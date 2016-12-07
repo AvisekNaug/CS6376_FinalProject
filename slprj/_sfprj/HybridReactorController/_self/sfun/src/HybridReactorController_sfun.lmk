@@ -1,0 +1,41 @@
+CC     = "C:\Program Files\MATLAB\R2013a\sys\lcc\bin\lcc.exe"
+LD     = "C:\Program Files\MATLAB\R2013a\sys\lcc\bin\lcclnk.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2013a\sys\lcc\bin\lcclib.exe"
+CFLAGS = -c -Zp8 -DMATLAB_MEX_FILE -noregistrylookup 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2013a\sys\lcc\lib" 
+LIBFLAGS = 
+
+OBJECTS = \
+	"lccstub.obj"\
+	"HybridReactorController_sfun.obj"\
+	"c1_HybridReactorController.obj"\
+	"c2_HybridReactorController.obj"\
+	"HybridReactorController_sfun_registry.obj"\
+	"C:\Program Files\MATLAB\R2013a\sys\lcc\mex\lccdef.def"\
+	"C:\Program Files\MATLAB\R2013a\stateflow\c\mex\lib\win32\sfc_mexlcc.lib"\
+	"C:\Program Files\MATLAB\R2013a\stateflow\c\debugger\lib\win32\sfc_debuglcc.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libmwblas.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libmx.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libmex.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libmat.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libut.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2013a\extern\lib\win32\lcc\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2013a\lib\win32\libippmwipt.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2013a\sys\lcc\include"  -I"C:\Program Files\MATLAB\R2013a\extern\include"  -I"C:\Program Files\MATLAB\R2013a\simulink\include"  -I"C:\Program Files\MATLAB\R2013a\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2013a\stateflow\c\debugger\include" 
+ 
+
+HybridReactorController_sfun.mexw32 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o HybridReactorController_sfun.mexw32 @HybridReactorController_sfun.lmko
+lccstub.obj :	"C:\Program Files\MATLAB\R2013a\sys\lcc\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2013a\sys\lcc\mex\lccstub.c"
+HybridReactorController_sfun.obj :	"HybridReactorController_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "HybridReactorController_sfun.c"
+c1_HybridReactorController.obj :	"c1_HybridReactorController.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_HybridReactorController.c"
+c2_HybridReactorController.obj :	"c2_HybridReactorController.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_HybridReactorController.c"
+HybridReactorController_sfun_registry.obj :	"HybridReactorController_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "HybridReactorController_sfun_registry.c"
