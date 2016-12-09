@@ -8,8 +8,10 @@ function [ flag ] = safetyMonitor( in1, in2 )
 %           - (x, y, xd, yd, theta) of other aircraft if non-empty
 %
 % flag: true if the safety is violated and false otherwise.
-
-flag = false;
-
+if (in1.x==in2.x && in1.y==in2.y)
+    flag = true;
+else
+    flag = false;
+end
 end
 
